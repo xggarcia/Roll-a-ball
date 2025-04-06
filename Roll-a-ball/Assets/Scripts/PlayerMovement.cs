@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject winText;
     public GameObject lostText; 
     public GameObject pickups;
+    public GameObject killers; 
 
     private Rigidbody rb;
     private int points; 
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         countText.text = "Count: " + points.ToString();
         if (points >= 12)
         {
+            killers.SetActive(false);
             winText.SetActive(true);
 
         }
@@ -72,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
             points++;
             SetCountText();
+
         }
 
         if (other.gameObject.CompareTag("Killer"))
