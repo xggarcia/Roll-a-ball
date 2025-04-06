@@ -5,8 +5,7 @@ using UnityEngine;
 public class Position : MonoBehaviour
 {   
     private Vector3 position;
-    private float  extra_position_x;
-    private float extra_position_y;
+
     public int limiter_x; 
     public int limiter_y;
     private float new_position_x;
@@ -24,23 +23,22 @@ public class Position : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        extra_position_x = Random.value;
-        extra_position_y = Random.value;
 
-        new_position_x = transform.position.x + extra_position_x * Time.deltaTime * cube_velocity*limiter_x;
-        new_position_y = transform.position.z + position.y * Time.deltaTime * cube_velocity*limiter_y;
+
+        new_position_x = transform.position.x +  Time.deltaTime * cube_velocity*limiter_x;
+        new_position_y = transform.position.z +  Time.deltaTime * cube_velocity*limiter_y;
         
         if (new_position_x > 9){
 
             limiter_x = limiter_x * (-1);
-            new_position_x = transform.position.x + extra_position_x * Time.deltaTime * cube_velocity * limiter_x;
+            new_position_x = transform.position.x + Time.deltaTime * cube_velocity * limiter_x;
         }
 
         if (new_position_x < -9)
         {
 
             limiter_x = limiter_x * (-1);
-            new_position_x = transform.position.x + extra_position_x * Time.deltaTime * cube_velocity * limiter_x;
+            new_position_x = transform.position.x + Time.deltaTime * cube_velocity * limiter_x;
         }
 
         if (new_position_y > 9){

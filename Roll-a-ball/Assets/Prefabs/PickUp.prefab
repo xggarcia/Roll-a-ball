@@ -140,4 +140,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   limiter_x: 1
   limiter_y: 1
-  cube_velocity: 4
+  cube_velocity: 2
