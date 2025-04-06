@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
-    public GameObject winText; 
+
+
+    public GameObject winText;
+    public GameObject lostText; 
+    public GameObject pickups;
 
     private Rigidbody rb;
     private int points; 
@@ -22,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         points = 0; 
         SetCountText();
         winText.SetActive(false); 
+        lostText.SetActive(false);
     }
 
     void SetCountText()
@@ -33,6 +38,15 @@ public class PlayerMovement : MonoBehaviour
             winText.SetActive(true);
 
         }
+
+    }
+
+    void HasLost()
+    {
+        lostText.SetActive(true );
+        pickups.SetActive(false );
+
+
 
     }
 
@@ -58,6 +72,11 @@ public class PlayerMovement : MonoBehaviour
             other.gameObject.SetActive(false);
             points++;
             SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("Killer"))
+        {
+            HasLost(); 
         }
 
     }
